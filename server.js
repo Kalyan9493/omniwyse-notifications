@@ -4,36 +4,6 @@ const cors = require('cors');
 var bodyParser = require('body-parser');
 var swaggerUI = require('swagger-ui-express');
 var swaggerJsDoc = require('./node_modules/swagger-jsdoc');
-const webpush = require('web-push');
-fakeDatabase = [];
-const PUBLIC_VAPID = "BGsbeNX09WnLFR1uOnzu2ITfk7Eaetrq_Io2npGJxgkSPBOOUgTNd7uZYxkp7Rmy8zUOtLcAFI9gmRSfbC9LTH4";
-const PRIVATE_VAPID ="ZvUqFxWf9G2MJ2L1KhAn09ombtb-H8cEfal7S9dsCBo";
-webpush.setVapidDetails('mailto:you@domain.com', PUBLIC_VAPID, PRIVATE_VAPID);
-app.post('/subscription', (req, res) => {
-    const subscription = req.body
-    fakeDatabase.push(subscription)
-  })
-  
-  app.post('/sendNotification', (req, res) => {
-    const notificationPayload = {
-      notification: {
-        title: 'New Notification',
-        body: 'This is the body of the notification',
-        icon: 'assets/icons/icon-512x512.png',
-      },
-    }
-  
-    const promises = []
-    fakeDatabase.forEach(subscription => {
-      promises.push(
-        webpush.sendNotification(
-          subscription,
-          JSON.stringify(notificationPayload)
-        )
-      )
-    })
-    Promise.all(promises).then(() => res.sendStatus(200))
-  })
 
 
 const swaggerOptions = {
