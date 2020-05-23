@@ -1,0 +1,131 @@
+
+// DataBase Name
+
+use OmniwyseNotifications
+
+// Inserting of Users
+
+db.users.insertMany([ 
+  
+ 	{ name : 'Nagamani', email_id : 'kambhamnagamani1995@gmail.com', mobile_no : 9856239878, isAdmin: false, password : 'mani1234', created_date : Date()},
+    
+ 	{ name : 'Sandhya', email_id : 'sandhya123@gmail.com', mobile_no : 8947683569,isAdmin: false, password : 'sandhya123', created_date : Date()},
+  
+	{ name : 'Kalyan', email_id : 'kalyan1234@gmail.com', mobile_no : 9893539878, isAdmin:true, password : 'kalyan1234', created_date : Date()}, 
+   
+ 	{ name : 'Upendra', email_id : 'upendra1234@gmail.com', mobile_no : 7989775535, isAdmin: false, password : 'upendra1234', created_date : Date()}, 
+   
+ 	{ name : 'Srilekha', email_id : 'srilekhayadhav123@gmail.com', mobile_no : 9844669878,isAdmin: false, password : 'srilekha1234', created_date : Date()}, 
+    
+       	{ name : 'Sandeep', email_id : 'sandeep1234@gmail.com', mobile_no : 8899539878, isAdmin: false, password : 'sandeep1234', created_date : Date()},   
+   
+      	{ name : 'Maneesha', email_id : 'maneesha1234@gmail.com', mobile_no : 9177569865,isAdmin: false, password : 'maneesha1234', created_date : Date()}, 
+   
+       	{ name : 'Vinay', email_id : 'vinay1234@gmail.com', mobile_no : 9893539878,isAdmin: false, password : 'vinay1234', created_date : Date()},  
+   
+       	{ name : 'Siresha', email_id : 'siresha1234@gmail.com', mobile_no : 7799258693, isAdmin: false, password : 'siresha1234', created_date : Date()}, 
+   
+ 	{ name : 'Vamshi', email_id : 'vamsi1234@gmail.com', mobile_no : 9879856811,isAdmin: false, password : 'vamshi1234', created_date : Date()} 
+ 
+  ]);  
+
+
+creating Tags localhost objectId's
+
+db.tags.insertOne({
+	
+employees:[
+	ObjectId("5eb55998840e909b24a2df7e"),
+	ObjectId("5eb55998840e909b24a2df7f"),
+	ObjectId("5eb55998840e909b24a2df80"),
+	ObjectId("5eb55998840e909b24a2df81"), 
+	ObjectId("5eb55998840e909b24a2df82"), 
+	ObjectId("5eb55998840e909b24a2df83"),
+	ObjectId("5eb55998840e909b24a2df84"),
+	ObjectId("5eb55998840e909b24a2df85"),
+	ObjectId("5eb55998840e909b24a2df86"),
+	ObjectId("5eb55998840e909b24a2df87") ],
+javaTeam:[
+	ObjectId("5eb55998840e909b24a2df80"),
+	ObjectId("5eb55998840e909b24a2df81"), 
+	ObjectId("5eb55998840e909b24a2df85"),
+	ObjectId("5eb55998840e909b24a2df87")
+],
+
+javascriptTeam:[
+	ObjectId("5eb55998840e909b24a2df80"),
+	ObjectId("5eb55998840e909b24a2df7e"),
+	ObjectId("5eb55998840e909b24a2df7f"),
+	ObjectId("5eb55998840e909b24a2df82"), 
+	ObjectId("5eb55998840e909b24a2df83"),
+	ObjectId("5eb55998840e909b24a2df84"),
+	ObjectId("5eb55998840e909b24a2df86")
+]}
+)
+
+
+creating Tags AWS objectId's
+
+db.tags.insertMany([{
+	
+employees:[
+	ObjectId("5eba0925e225e569a0bf5ede"),
+                	ObjectId("5eba0925e225e569a0bf5edf"),
+                	ObjectId("5eba0925e225e569a0bf5ee0"),
+                	ObjectId("5eba0925e225e569a0bf5ee1"),
+                	ObjectId("5eba0925e225e569a0bf5ee2"),
+                	ObjectId("5eba0925e225e569a0bf5ee3"),
+                	ObjectId("5eba0925e225e569a0bf5ee4"),
+                	ObjectId("5eba0925e225e569a0bf5ee5"),
+                	ObjectId("5eba0925e225e569a0bf5ee6"),
+                	ObjectId("5eba0925e225e569a0bf5ee7")
+ ],
+
+javaTeam:[
+	ObjectId("5eba0925e225e569a0bf5ee0"),
+                	ObjectId("5eba0925e225e569a0bf5ee1"),
+	ObjectId("5eba0925e225e569a0bf5ee5"),
+	ObjectId("5eba0925e225e569a0bf5ee7")
+],
+
+javascriptTeam:[
+	ObjectId("5eba0925e225e569a0bf5ee0"),
+	ObjectId("5eba0925e225e569a0bf5ede"),
+                	ObjectId("5eba0925e225e569a0bf5edf"),
+                	ObjectId("5eba0925e225e569a0bf5ee2"),
+                	ObjectId("5eba0925e225e569a0bf5ee3"),
+	ObjectId("5eba0925e225e569a0bf5ee4"),
+	ObjectId("5eba0925e225e569a0bf5ee6"),
+]
+
+}])
+
+db.tags.insertOne({
+	employees:[
+	ObjectId("5eb55998840e909b24a2df7e"),
+	ObjectId("5eb55998840e909b24a2df7f"),
+	ObjectId("5eb55998840e909b24a2df80"),
+	ObjectId("5eb55998840e909b24a2df81"), 
+	ObjectId("5eb55998840e909b24a2df82"), 
+	ObjectId("5eb55998840e909b24a2df83"),
+	ObjectId("5eb55998840e909b24a2df84"),
+	ObjectId("5eb55998840e909b24a2df85"),
+	ObjectId("5eb55998840e909b24a2df86"),
+	ObjectId("5eb55998840e909b24a2df87")
+ ]})
+db.tags.insertOne({javaTeam:[
+	ObjectId("5eb55998840e909b24a2df80"),
+	ObjectId("5eb55998840e909b24a2df81"), 
+	ObjectId("5eb55998840e909b24a2df85"),
+	ObjectId("5eb55998840e909b24a2df87")
+]})
+db.tags.insertOne({javascriptTeam:[
+	ObjectId("5eb55998840e909b24a2df80"),
+	ObjectId("5eb55998840e909b24a2df7e"),
+	ObjectId("5eb55998840e909b24a2df7f"),
+	ObjectId("5eb55998840e909b24a2df82"), 
+	ObjectId("5eb55998840e909b24a2df83"),
+	ObjectId("5eb55998840e909b24a2df84"),
+	ObjectId("5eb55998840e909b24a2df86")
+	
+]})
