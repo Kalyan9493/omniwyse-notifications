@@ -77,7 +77,7 @@ app.get('/getannouncementbytags/:tags',verifyToken,postAnnouncement.findAnnounce
 
 app.get('/userintags/:userid',verifyToken,tagsController.findUserInTags)
 app.post('/devicetoken',deviceTokenController.deviceTokens);
-app.get('/getdevicetokens',deviceTokenController.getTokens);
+app.get('/devicetoken',deviceTokenController.getTokens);
 
 const notification_options = {
     priority: "high",
@@ -94,13 +94,13 @@ admin.initializeApp({
 });
 
 app.post('/firebase/notification', (req, res)=>{
-    const  registrationToken = req.body.token;
+    const  registrationTokens = req.body.token;
     const message = req.body.payload;
     const options =  notification_options
     console.log(req.body.token);
     console.log( req.body.payload);
     
-      admin.messaging().sendToDevice(registrationToken, message, options)
+      admin.messaging().sendToDevice(registrationTokens, message, options)
       .then( response => {
 
        res.status(200).send("Notification sent successfully")
