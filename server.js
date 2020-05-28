@@ -16,7 +16,7 @@ const swaggerOptions = {
             contact:{
                 name:"Kalyan Kumar Reddy.K"
             },
-            servers:["http://localhost:3000"]
+            servers:["http://127.0.0.1:3000"]
         }
     },
     apis:["server.js"]

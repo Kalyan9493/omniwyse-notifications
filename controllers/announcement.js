@@ -11,8 +11,9 @@ exports.announcement = function(req,res){
             if(req.file){
                 if(req.body.scheduledTime){
                     var image = req.file.path;
+                    console.log(image);
                     var url = image.split('\\');
-                    var imageurl = "http://localhost:3000/"+url[1]; 
+                    var imageurl = url[1]; 
                     var tag = JSON.parse(req.body.tags);
                     Announcement.insertMany({title:req.body.title,description:req.body.description,details: req.body.details,link:req.body.link,imageURL : imageurl,tags:tag,date:req.body.scheduledTime,isScheduled:true},function(err,data){
                         if(err){
@@ -26,7 +27,8 @@ exports.announcement = function(req,res){
                 }else{
                     var image = req.file.path;
                     var url = image.split('\\');
-                    var imageurl = "http://localhost:3000/"+url[1]; 
+                    console.log(image)
+                    var imageurl =url[1]; 
                     var tag = JSON.parse(req.body.tags);
                     console.log(req.body.scheduledTime);
                     Announcement.insertMany({title:req.body.title,description:req.body.description,details: req.body.details,link:req.body.link,imageURL : imageurl,tags:tag,date:Date(),isScheduled:false},function(err,data){
