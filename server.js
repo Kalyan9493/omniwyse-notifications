@@ -64,6 +64,7 @@ var findAllUsers = require('./controllers/usercontroller');
 var postAnnouncement = require('./controllers/announcement');
 var tagsController = require('./controllers/tagscontroller');
 var deviceTokenController = require('./controllers/tokenController');
+var scheduledAnnouncementController = require('./controllers/scheduledAnnouncement');
 
 // Routes
 
@@ -79,12 +80,42 @@ app.get('/userintags/:userid',verifyToken,tagsController.findUserInTags)
 app.post('/devicetoken',deviceTokenController.deviceTokens);
 app.get('/devicetoken',deviceTokenController.getTokens);
 
+app.get('/scheduledannouncement',scheduledAnnouncementController.getScheduledAnnouncements);
+app.get('/scheduledannouncement/:id',scheduledAnnouncementController.findScheduledAnnouncementById);
+app.delete('/scheduledannouncement/:id',scheduledAnnouncementController.deleteScheduledAnnouncement);
+app.put('/scheduledannouncement/:id',scheduledAnnouncementController.updateScheduledAnnouncement);
+// function for verifying Token
+
+function verifyToken(req,res,next){
+    const barearHeader = req.headers['authorization'];
+
+    if(typeof barearHeader != 'undefined'){
+
+        const barear = barearHeader.split(' ');
+
+        const barearToken = barear[1];
+
+        req.token = barearToken;
+
+        next();
+
+    }else{
+        res.sendStatus(403);
+    }
+}
+
+
+
+
+// for sending notifications
+
+var admin = require("firebase-admin");
+
 const notification_options = {
     priority: "high",
     timeToLive: 60 * 60 * 24
   };
 
-  var admin = require("firebase-admin");
 
 var serviceAccount = require('./node_modules/firebase-admin/announcements-42d06-firebase-adminsdk-uu8o1-2164b24bb5.json');
 
@@ -112,25 +143,8 @@ app.post('/firebase/notification', (req, res)=>{
 
 })
 
-// function for verifying Token
-
-function verifyToken(req,res,next){
-    const barearHeader = req.headers['authorization'];
-
-    if(typeof barearHeader != 'undefined'){
-
-        const barear = barearHeader.split(' ');
-
-        const barearToken = barear[1];
-
-        req.token = barearToken;
-
-        next();
-
-    }else{
-        res.sendStatus(403);
-    }
-}
+var scheduler = require('./scheduler');
+scheduler.scheduler()
 
 app.listen(3000,function(){
     console.log("API running at port 3000");
