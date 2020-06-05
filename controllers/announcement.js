@@ -1,6 +1,7 @@
 var Announcement = require('../models/announcements');
 const jwt = require('jsonwebtoken');
 var ScheduledAnnouncement = require('../models/scheduledAnnouncements')
+var notification = require('../pushNotification');
 
 exports.announcement = function(req,res){
 
@@ -13,7 +14,7 @@ exports.announcement = function(req,res){
                 if(req.body.scheduledTime){
                     var image = req.file.path;
                     console.log(image);
-                    var url = image.split('/');
+                    var url = image.split('\\');
                     var imageurl = url[1]; 
                     var tag = JSON.parse(req.body.tags);
                     ScheduledAnnouncement.insertMany({title:req.body.title,description:req.body.description,details: req.body.details,link:req.body.link,imageURL : imageurl,tags:tag,date:Date(),scheduledDate:req.body.scheduledTime,isScheduled:true},function(err,data){
@@ -27,7 +28,7 @@ exports.announcement = function(req,res){
 
                 }else{
                     var image = req.file.path;
-                    var url = image.split('/');
+                    var url = image.split('\\');
                     console.log(image)
                     var imageurl =url[1]; 
                     var tag = JSON.parse(req.body.tags);
@@ -37,6 +38,14 @@ exports.announcement = function(req,res){
                             console.log(err);
                             res.status(500).send("Internal server error ")
                         }else{
+                            var payload ={
+                                notification:{
+                                    title:req.body.title,
+                                    body:req.body.description
+                                }
+                            }
+                            notification.pushNotification(payload);
+                            console.log("notification called");
                             res.send(data);
                         }
                     });
@@ -64,6 +73,14 @@ exports.announcement = function(req,res){
                             console.log(err);
                             res.status(500).send("Internal server error ")
                         }else{
+                            var payload ={
+                                notification:{
+                                    title:req.body.title,
+                                    body:req.body.description
+                                }
+                            }
+                            notification.pushNotification(payload);
+                            console.log("notification called");
                             res.send(data);
                         }
                     });

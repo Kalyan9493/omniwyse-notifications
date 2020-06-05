@@ -104,44 +104,7 @@ function verifyToken(req,res,next){
     }
 }
 
-
-
-
-// for sending notifications
-
-var admin = require("firebase-admin");
-
-const notification_options = {
-    priority: "high",
-    timeToLive: 60 * 60 * 24
-  };
-
-
-var serviceAccount = require('./node_modules/firebase-admin/announcements-42d06-firebase-adminsdk-uu8o1-2164b24bb5.json');
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://announcements-42d06.firebaseio.com"
-});
-
-app.post('/firebase/notification', (req, res)=>{
-    const  registrationTokens = req.body.token;
-    const message = req.body.payload;
-    const options =  notification_options
-    console.log(req.body.token);
-    console.log( req.body.payload);
-    
-      admin.messaging().sendToDevice(registrationTokens, message, options)
-      .then( response => {
-
-       res.status(200).send("Notification sent successfully")
-       
-      })
-      .catch( error => {
-          console.log(error);
-      });
-
-})
+// Scheduler for scheduled announcement
 
 var scheduler = require('./scheduler');
 scheduler.scheduler()
