@@ -9,7 +9,7 @@ exports.login = function(req,res){
             res.status(500).send({message:"Internal Server Error"});
         }else{
             if(user){
-                    jwt.sign({user},'secretkey',{expiresIn:'4h'},(err,token)=>{
+                    jwt.sign({user},'secretkey',{expiresIn:'8h'},(err,token)=>{
                         res.send({
                             id:user._id,
                             name:user.name,

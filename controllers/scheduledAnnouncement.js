@@ -33,7 +33,6 @@ exports.updateScheduledAnnouncement = function(req,res){
             if(req.file){
                 if(req.body.scheduledTime){
                     var image = req.file.path;
-                    console.log(image);
                     var url = image.split('\\');
                     var imageurl = url[1]; 
                     var updatedValues = {$set:{title:req.body.title,description:req.body.description,details: req.body.details,link:req.body.link,imageURL : imageurl,tags:req.body.tags,date:Date(),scheduledDate:req.body.scheduledTime,isScheduled:true}};
