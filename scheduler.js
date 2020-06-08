@@ -5,7 +5,6 @@ const ScheduledAnnouncements = require('./models/scheduledAnnouncements');
 const Announcements = require('./models/announcements');
 
 exports.scheduler = function(){ cron.schedule("* * * * *",function(){
-    console.log("job runnning .....");
 
     var currentTime = new Date();
     ScheduledAnnouncements.find({scheduledDate:{$lte:currentTime}},function(err,data){
