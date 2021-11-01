@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const notification = require('./pushNotification');
+// const notification = require('./pushNotification');
 
 const ScheduledAnnouncements = require('./models/scheduledAnnouncements');
 const Announcements = require('./models/announcements');
@@ -21,16 +21,16 @@ exports.scheduler = function(){ cron.schedule("* * * * *",function(){
                             console.log(err);
                         }else{
                             
-                            console.log(data1);
-                            console.log("Data Inserted");
-                            var payload ={
-                                notification:{
-                                    title:element.title,
-                                    body:element.description
-                                }
-                            }
-                            notification.pushNotification(payload);
-                            console.log("notification called");
+                            // console.log(data1);
+                            // console.log("Data Inserted");
+                            // var payload ={
+                            //     notification:{
+                            //         title:element.title,
+                            //         body:element.description
+                            //     }
+                            // }
+                            // notification.pushNotification(payload);
+                            // console.log("notification called");
                             ScheduledAnnouncements.findByIdAndDelete(element._id,function(err,data2){
                                 if(err){
                                     console.log(err);

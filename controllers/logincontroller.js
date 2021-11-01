@@ -20,6 +20,7 @@ exports.login = function(req,res){
                     })
 
             }else{
+                console.log(uname, pass)
                 res.status(404).send("User not found")
             }
            

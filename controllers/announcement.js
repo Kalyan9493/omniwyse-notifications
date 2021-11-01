@@ -1,7 +1,7 @@
 var Announcement = require('../models/announcements');
 const jwt = require('jsonwebtoken');
 var ScheduledAnnouncement = require('../models/scheduledAnnouncements')
-var notification = require('../pushNotification');
+// var notification = require('../pushNotification');
 
 exports.announcement = function(req,res){
 
@@ -36,13 +36,13 @@ exports.announcement = function(req,res){
                             console.log(err);
                             res.status(500).send("Internal server error ")
                         }else{
-                            var payload ={
-                                notification:{
-                                    title:req.body.title,
-                                    body:req.body.description
-                                }
-                            }
-                            notification.pushNotification(payload);
+                            // var payload ={
+                            //     notification:{
+                            //         title:req.body.title,
+                            //         body:req.body.description
+                            //     }
+                            // }
+                            // notification.pushNotification(payload);
                             console.log("Announcement Stored");
                             console.log("notification called");
                             res.send(data);
@@ -73,15 +73,15 @@ exports.announcement = function(req,res){
                             console.log(err);
                             res.status(500).send("Internal server error ")
                         }else{
-                            var payload ={
-                                notification:{
-                                    title:req.body.title,
-                                    body:req.body.description
-                                }
-                            }
-                            notification.pushNotification(payload);
-                            console.log("notification called");
-                            console.log("Announcement Stored");
+                            // var payload ={
+                            //     notification:{
+                            //         title:req.body.title,
+                            //         body:req.body.description
+                            //     }
+                            // }
+                            // notification.pushNotification(payload);
+                            // console.log("notification called");
+                            // console.log("Announcement Stored");
                             res.send(data);
                         }
                     });
